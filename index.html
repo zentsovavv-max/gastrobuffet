@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Гастробоксы Анны — Фуршетная студия, СПб</title>
+<style>
+  html, body { margin:0; padding:0; background:#0f0d0a; overflow-x:hidden; }
+
+/* ── IFRAME OVERRIDES: fixed elements hidden ── */
+.gb-sticky { display:none !important; }
+.gb-tg-widget { display:none !important; }
+</style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET & ROOT ── */
+#gb-root *, #gb-root *::before, #gb-root *::after { margin:0; padding:0; box-sizing:border-box; }
+#gb-root {
+  --bg:#0f0d0a; --bg2:#161310; --bg3:#1e1a14;
+  --gold:#c9a96e; --gold-lt:#e8d5b0; --cream:#f5f0e8; --muted:#b0a08a;
+  --border:rgba(201,169,110,0.18);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.6;
+  color:var(--cream);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  width:100%;
+}
+
+/* ── HERO ── */
+.gb-hero {
+  position:relative;
+  min-height:92vw;
+  max-height:600px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:28px 22px 36px;
+  overflow:hidden;
+}
+.gb-hero-bg {
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to top, rgba(15,13,10,1) 0%, rgba(15,13,10,0.55) 42%, transparent 70%),
+    linear-gradient(135deg, rgba(15,13,10,0.6) 0%, transparent 60%),
+    url('https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=900&q=80') center/cover no-repeat;
+}
+.gb-hero-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(201,169,110,0.12);
+  border:1px solid var(--border);
+  padding:6px 14px;
+  border-radius:100px;
+  font-size:10px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:14px;
+  width:fit-content;
+  position:relative;
+}
+.gb-hero-badge::before {
+  content:'';
+  width:5px; height:5px;
+  background:var(--gold);
+  border-radius:50%;
+  animation:gb-pulse 2s infinite;
+}
+.gb-hero h1 {
+  font-family:var(--serif);
+  font-size:clamp(36px,9vw,62px);
+  font-weight:300;
+  line-height:1.05;
+  color:var(--cream);
+  margin-bottom:14px;
+  position:relative;
+}
+.gb-hero h1 em { font-style:italic; color:var(--gold-lt); }
+.gb-hero-sub {
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:24px;
+  position:relative;
+}
+.gb-hero-actions {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  position:relative;
+}
+
+/* ── BUTTONS ── */
+.gb-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:13px 22px;
+  border-radius:3px;
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  cursor:pointer;
+  border:none;
+  transition:background 0.25s, transform 0.2s, border-color 0.25s;
+}
+.gb-btn-primary { background:var(--gold); color:#0f0d0a; }
+.gb-btn-primary:hover { background:var(--gold-lt); transform:translateY(-1px); }
+.gb-btn-ghost {
+  background:none;
+  border:1px solid var(--border);
+  color:var(--gold-lt);
+}
+.gb-btn-ghost:hover { border-color:var(--gold); color:var(--gold); }
+.gb-btn-tg { background:#0088cc; color:#fff; }
+.gb-btn-ig { background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045); color:#fff; }
+
+/* ── MARQUEE ── */
+.gb-marquee-wrap { overflow:hidden; background:var(--gold); padding:11px 0; }
+.gb-marquee-track {
+  display:flex;
+  animation:gb-marquee 20s linear infinite;
+  white-space:nowrap;
+}
+.gb-marquee-item {
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:#0f0d0a;
+  padding:0 24px;
+}
+.gb-marquee-item::after { content:'◆'; font-size:6px; opacity:0.4; }
+
+/* ── SECTION SHARED ── */
+.gb-section { padding:52px 22px; }
+.gb-section-label {
+  font-size:10px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+.gb-section-title {
+  font-family:var(--serif);
+  font-size:clamp(30px,7vw,46px);
+  font-weight:300;
+  line-height:1.1;
+  color:var(--cream);
+  margin-bottom:20px;
+}
+.gb-section-title em { font-style:italic; color:var(--gold-lt); }
+
+/* ── ABOUT ── */
+.gb-about { background:var(--bg2); }
+.gb-about-img-wrap {
+  position:relative;
+  height:260px;
+  margin-bottom:28px;
+}
+.gb-about-img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:2px;
+  filter:brightness(0.88) contrast(1.06);
+  display:block;
+}
+.gb-about-year {
+  position:absolute;
+  bottom:-16px;
+  left:16px;
+  background:var(--gold);
+  color:#0f0d0a;
+  width:86px; height:86px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--serif);
+  z-index:2;
+}
+.gb-about-year span:first-child { font-size:28px; font-weight:500; line-height:1; }
+.gb-about-year span:last-child { font-size:10px; letter-spacing:0.1em; }
+.gb-about-text { margin-top:24px; }
+.gb-about-text p { color:var(--muted); font-size:14px; line-height:1.8; margin-bottom:16px; }
+.gb-about-text p strong { color:var(--cream); font-weight:400; }
+.gb-stats {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  margin-top:28px;
+}
+.gb-stat { background:var(--bg2); padding:22px 18px; }
+.gb-stat-num {
+  font-family:var(--serif);
+  font-size:36px;
+  font-weight:300;
+  color:var(--gold);
+  line-height:1;
+  margin-bottom:4px;
+}
+.gb-stat-label { font-size:11px; color:var(--muted); }
+
+/* ── MENU CATEGORIES ── */
+.gb-menu { background:var(--bg); }
+.gb-menu-header {
+  border-bottom:1px solid var(--border);
+  padding-bottom:22px;
+  margin-bottom:32px;
+}
+.gb-menu-grid {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.gb-menu-card {
+  background:var(--bg);
+  padding:28px 22px 36px;
+  position:relative;
+  overflow:hidden;
+  transition:background 0.3s;
+}
+.gb-menu-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:2px;
+  background:var(--gold);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform 0.4s;
+}
+.gb-menu-card:hover { background:var(--bg3); }
+.gb-menu-card:hover::before { transform:scaleX(1); }
+.gb-card-num {
+  font-family:var(--serif);
+  font-size:42px;
+  font-weight:300;
+  color:rgba(201,169,110,0.08);
+  line-height:1;
+  margin-bottom:10px;
+  user-select:none;
+}
+.gb-card-name { font-size:16px; font-weight:400; color:var(--cream); margin-bottom:8px; }
+.gb-card-desc { font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:16px; }
+.gb-card-price {
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:300;
+  color:var(--gold);
+  display:flex;
+  align-items:baseline;
+  gap:5px;
+  margin-bottom:14px;
+}
+.gb-card-price span { font-size:11px; color:var(--muted); font-family:var(--sans); }
+.gb-card-add-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--gold-lt);
+  padding:9px 16px;
+  border-radius:3px;
+  font-family:var(--sans);
+  font-size:11px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:all 0.25s;
+}
+.gb-card-add-btn:hover { background:var(--gold); color:#0f0d0a; border-color:var(--gold); }
+.gb-card-add-btn.added { background:rgba(201,169,110,0.15); border-color:var(--gold); color:var(--gold); }
+
+/* ── CATALOG ── */
+.gb-catalog { background:var(--bg2); }
+.gb-catalog-tabs {
+  display:flex;
+  gap:0;
+  border:1px solid var(--border);
+  margin-bottom:28px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.gb-catalog-tabs::-webkit-scrollbar { display:none; }
+.gb-cat-tab {
+  padding:11px 18px;
+  font-size:11px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  background:none;
+  border:none;
+  border-right:1px solid var(--border);
+  cursor:pointer;
+  transition:all 0.25s;
+  white-space:nowrap;
+  font-family:var(--sans);
+  flex-shrink:0;
+}
+.gb-cat-tab:last-child { border-right:none; }
+.gb-cat-tab.active { background:var(--gold); color:#0f0d0a; font-weight:500; }
+.gb-catalog-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.gb-prod-card {
+  background:var(--bg2);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  transition:background 0.25s;
+}
+.gb-prod-card:hover { background:var(--bg3); }
+.gb-prod-img-wrap {
+  position:relative;
+  overflow:hidden;
+  height:140px;
+  cursor:pointer;
+}
+.gb-prod-img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform 0.45s ease;
+  filter:brightness(0.9);
+}
+.gb-prod-card:hover .gb-prod-img { transform:scale(1.05); }
+.gb-prod-img-placeholder {
+  width:100%; height:100%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:36px;
+  background:var(--bg3);
+}
+.gb-prod-badge {
+  position:absolute;
+  top:8px; left:8px;
+  background:var(--gold);
+  color:#0f0d0a;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:3px 8px;
+  border-radius:2px;
+}
+.gb-prod-info { padding:14px 14px 16px; flex:1; display:flex; flex-direction:column; }
+.gb-prod-name {
+  font-size:13px;
+  font-weight:400;
+  color:var(--cream);
+  margin-bottom:5px;
+  line-height:1.3;
+  cursor:pointer;
+}
+.gb-prod-desc { font-size:11px; color:var(--muted); line-height:1.5; margin-bottom:10px; flex:1; }
+.gb-prod-meta { display:flex; align-items:center; justify-content:space-between; gap:6px; }
+.gb-prod-price {
+  font-family:var(--serif);
+  font-size:18px;
+  font-weight:300;
+  color:var(--gold);
+}
+.gb-prod-price sub { font-size:10px; color:var(--muted); font-family:var(--sans); }
+.gb-prod-add {
+  width:32px; height:32px;
+  border:1px solid var(--border);
+  background:none;
+  color:var(--gold-lt);
+  border-radius:2px;
+  font-size:18px;
+  cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:all 0.25s;
+  flex-shrink:0;
+}
+.gb-prod-add:hover { background:var(--gold); color:#0f0d0a; border-color:var(--gold); }
+.gb-prod-add.added { background:rgba(201,169,110,0.15); border-color:var(--gold); color:var(--gold); }
+.gb-catalog-empty {
+  text-align:center;
+  padding:48px 20px;
+  color:var(--muted);
+  font-family:var(--serif);
+  font-size:18px;
+  font-style:italic;
+  grid-column:1/-1;
+}
+
+/* ── HOW ── */
+.gb-how { background:var(--bg); }
+.gb-how-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:36px;
+}
+.gb-step-num {
+  width:44px; height:44px;
+  border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--serif);
+  font-size:20px;
+  font-weight:300;
+  color:var(--gold);
+  margin-bottom:16px;
+  transition:border-color 0.25s, background 0.25s;
+}
+.gb-how-step:hover .gb-step-num { border-color:var(--gold); background:rgba(201,169,110,0.06); }
+.gb-step-title { font-size:14px; font-weight:400; color:var(--cream); margin-bottom:7px; }
+.gb-step-text { font-size:12px; color:var(--muted); line-height:1.65; }
+
+/* ── REVIEWS ── */
+.gb-reviews { background:var(--bg2); }
+.gb-reviews-list { display:flex; flex-direction:column; gap:16px; margin-top:32px; }
+.gb-review-card {
+  border:1px solid var(--border);
+  padding:26px 22px;
+  transition:border-color 0.25s;
+}
+.gb-review-card:hover { border-color:rgba(201,169,110,0.38); }
+.gb-review-stars { color:var(--gold); font-size:13px; letter-spacing:3px; margin-bottom:14px; }
+.gb-review-text {
+  font-family:var(--serif);
+  font-size:16px;
+  font-weight:300;
+  line-height:1.55;
+  color:var(--cream);
+  font-style:italic;
+  margin-bottom:18px;
+}
+.gb-review-author { font-size:12px; color:var(--muted); }
+.gb-review-author strong { color:var(--cream); font-weight:400; display:block; margin-bottom:2px; }
+
+/* ── CONDITIONS ── */
+.gb-conditions { background:var(--bg); }
+.gb-conditions-grid {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  margin-top:32px;
+}
+.gb-cond-item {
+  background:var(--bg);
+  padding:24px 20px;
+  display:flex;
+  gap:16px;
+  transition:background 0.25s;
+}
+.gb-cond-item:hover { background:var(--bg3); }
+.gb-cond-icon { font-size:18px; color:var(--gold); flex-shrink:0; margin-top:2px; }
+.gb-cond-title { font-size:14px; color:var(--cream); margin-bottom:5px; }
+.gb-cond-text { font-size:13px; color:var(--muted); line-height:1.6; }
+
+/* ── CTA ── */
+.gb-cta {
+  background:var(--bg3);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  text-align:center;
+  padding:56px 22px;
+}
+.gb-cta > p { color:var(--muted); font-size:14px; margin-bottom:32px; line-height:1.7; }
+.gb-cta-actions { display:flex; flex-direction:column; gap:12px; align-items:center; }
+.gb-cta-actions .gb-btn { width:100%; justify-content:center; max-width:320px; }
+
+/* ── QUIZ ── */
+.gb-quiz { background:var(--bg3); border-top:1px solid var(--border); }
+.gb-quiz-progress { display:flex; gap:5px; margin-bottom:28px; }
+.gb-quiz-dot {
+  height:3px; flex:1;
+  background:var(--border);
+  border-radius:2px;
+  transition:background 0.35s;
+}
+.gb-quiz-dot.done { background:var(--gold); }
+.gb-quiz-step { display:none; animation:gb-fadein 0.4s ease both; }
+.gb-quiz-step.active { display:block; }
+.gb-quiz-result { display:none; animation:gb-fadein 0.4s ease both; }
+.gb-quiz-result.active { display:block; }
+.gb-quiz-q {
+  font-family:var(--serif);
+  font-size:clamp(22px,6vw,34px);
+  font-weight:300;
+  color:var(--cream);
+  line-height:1.15;
+  margin-bottom:24px;
+}
+.gb-quiz-q em { font-style:italic; color:var(--gold-lt); }
+.gb-quiz-options {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:28px;
+}
+.gb-quiz-option {
+  padding:16px 14px;
+  border:1px solid var(--border);
+  border-radius:3px;
+  background:var(--bg2);
+  cursor:pointer;
+  transition:border-color 0.25s, background 0.25s;
+  text-align:left;
+}
+.gb-quiz-option:hover { border-color:var(--gold); background:rgba(201,169,110,0.05); }
+.gb-quiz-option.selected { border-color:var(--gold); background:rgba(201,169,110,0.10); }
+.gb-quiz-opt-icon { font-size:20px; margin-bottom:7px; }
+.gb-quiz-opt-label { font-size:13px; color:var(--cream); font-weight:400; margin-bottom:3px; }
+.gb-quiz-opt-desc { font-size:11px; color:var(--muted); }
+.gb-quiz-nav { display:flex; justify-content:space-between; align-items:center; }
+.gb-quiz-back {
+  background:none; border:none; cursor:pointer;
+  color:var(--muted); font-size:12px; letter-spacing:0.1em;
+  text-transform:uppercase; transition:color 0.25s;
+  font-family:var(--sans);
+}
+.gb-quiz-back:hover { color:var(--gold); }
+.gb-quiz-next {
+  display:inline-flex; align-items:center; gap:7px;
+  background:var(--gold); color:#0f0d0a;
+  padding:12px 22px; border-radius:3px; border:none;
+  cursor:pointer; font-family:var(--sans); font-size:11px;
+  font-weight:500; letter-spacing:0.12em; text-transform:uppercase;
+  transition:background 0.25s;
+}
+.gb-quiz-next:hover { background:var(--gold-lt); }
+.gb-quiz-next:disabled { opacity:0.38; cursor:not-allowed; }
+.gb-quiz-rec-cards { display:flex; flex-direction:column; gap:12px; margin-bottom:24px; }
+.gb-quiz-rec-card {
+  background:var(--bg2);
+  border:1px solid var(--border);
+  padding:18px 16px;
+  border-radius:3px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.gb-quiz-rec-name { font-size:13px; color:var(--cream); font-weight:400; margin-bottom:3px; }
+.gb-quiz-rec-price {
+  font-family:var(--serif);
+  font-size:18px;
+  color:var(--gold);
+  font-weight:300;
+}
+.gb-quiz-rec-add {
+  padding:9px 14px;
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--gold-lt);
+  border-radius:3px;
+  font-family:var(--sans);
+  font-size:11px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:all 0.25s;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.gb-quiz-rec-add:hover { background:var(--gold); color:#0f0d0a; border-color:var(--gold); }
+.gb-quiz-result-label {
+  font-size:10px; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:12px;
+}
+.gb-quiz-result-title {
+  font-family:var(--serif);
+  font-size:clamp(26px,6vw,40px);
+  font-weight:300;
+  color:var(--cream);
+  line-height:1.1;
+  margin-bottom:24px;
+}
+.gb-quiz-result-title em { font-style:italic; color:var(--gold-lt); }
+.gb-quiz-restart {
+  background:none; border:none; cursor:pointer;
+  color:var(--muted); font-size:12px; letter-spacing:0.1em;
+  text-transform:uppercase; transition:color 0.25s;
+  margin-top:12px; display:block; font-family:var(--sans);
+}
+.gb-quiz-restart:hover { color:var(--gold); }
+
+/* ── CART DRAWER ── */
+.gb-cart-overlay {
+  position:fixed; inset:0; z-index:9800;
+  background:rgba(0,0,0,0.65);
+  backdrop-filter:blur(4px);
+  opacity:0; pointer-events:none;
+  transition:opacity 0.3s;
+}
+.gb-cart-overlay.open { opacity:1; pointer-events:auto; }
+.gb-cart-drawer {
+  position:fixed;
+  top:0; right:0; bottom:0;
+  z-index:9801;
+  width:min(100vw, 380px);
+  background:var(--bg2);
+  border-left:1px solid var(--border);
+  display:flex; flex-direction:column;
+  transform:translateX(100%);
+  transition:transform 0.38s cubic-bezier(0.4,0,0.2,1);
+}
+.gb-cart-drawer.open { transform:translateX(0); }
+.gb-cart-header {
+  padding:22px 24px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.gb-cart-title {
+  font-family:var(--serif);
+  font-size:24px; font-weight:300; color:var(--cream);
+}
+.gb-cart-close {
+  background:none; border:none; cursor:pointer;
+  color:var(--muted); font-size:26px; transition:color 0.25s; line-height:1;
+}
+.gb-cart-close:hover { color:var(--cream); }
+.gb-cart-items { flex:1; overflow-y:auto; padding:18px 24px; }
+.gb-cart-empty {
+  text-align:center; padding:48px 0;
+  color:var(--muted); font-family:var(--serif); font-size:18px; font-style:italic;
+}
+.gb-cart-item {
+  display:flex; align-items:flex-start; gap:12px;
+  padding:14px 0; border-bottom:1px solid var(--border);
+}
+.gb-cart-item-info { flex:1; }
+.gb-cart-item-name { font-size:13px; color:var(--cream); margin-bottom:3px; }
+.gb-cart-item-price {
+  font-family:var(--serif); font-size:18px;
+  color:var(--gold); font-weight:300;
+}
+.gb-cart-qty { display:flex; align-items:center; gap:10px; margin-top:8px; }
+.gb-qty-btn {
+  width:26px; height:26px;
+  border:1px solid var(--border); background:none;
+  color:var(--gold-lt); cursor:pointer; font-size:15px;
+  border-radius:2px; display:flex; align-items:center; justify-content:center;
+  transition:all 0.25s;
+}
+.gb-qty-btn:hover { border-color:var(--gold); background:rgba(201,169,110,0.08); }
+.gb-qty-num { font-size:14px; color:var(--cream); min-width:18px; text-align:center; }
+.gb-cart-remove {
+  background:none; border:none; cursor:pointer;
+  color:var(--muted); font-size:18px; transition:color 0.25s; padding:3px;
+}
+.gb-cart-remove:hover { color:#e05a5a; }
+.gb-cart-footer { padding:18px 24px; border-top:1px solid var(--border); }
+.gb-cart-total {
+  display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;
+}
+.gb-cart-total-label {
+  font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);
+}
+.gb-cart-total-sum {
+  font-family:var(--serif); font-size:28px; font-weight:300; color:var(--gold);
+}
+.gb-cart-note { font-size:11px; color:var(--muted); margin-bottom:16px; }
+.gb-cart-checkout-btn {
+  width:100%; padding:14px;
+  background:var(--gold); color:#0f0d0a;
+  border:none; cursor:pointer; font-family:var(--sans);
+  font-size:12px; font-weight:500; letter-spacing:0.12em;
+  text-transform:uppercase; border-radius:3px; transition:background 0.25s;
+}
+.gb-cart-checkout-btn:hover { background:var(--gold-lt); }
+
+/* ── STICKY BAR ── */
+.gb-sticky {
+  position:fixed; bottom:0; left:0; right:0; z-index:9700;
+  background:rgba(15,13,10,0.97);
+  backdrop-filter:blur(12px);
+  border-top:1px solid var(--border);
+  padding:10px 20px;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  transform:translateY(100%);
+  transition:transform 0.38s;
+}
+.gb-sticky.show { transform:translateY(0); }
+.gb-sticky-text {
+  font-family:var(--serif);
+  font-size:15px; color:var(--cream); font-weight:300;
+}
+.gb-sticky-text em { font-style:italic; color:var(--gold-lt); }
+.gb-sticky-actions { display:flex; gap:10px; align-items:center; flex-shrink:0; }
+
+/* ── CART BADGE ── */
+.gb-cart-badge-wrap { position:relative; display:inline-flex; align-items:center; }
+.gb-cart-count {
+  position:absolute; top:-8px; right:-8px;
+  background:var(--gold); color:#0f0d0a;
+  width:18px; height:18px; border-radius:50%;
+  display:none; align-items:center; justify-content:center;
+  font-size:10px; font-weight:500; font-family:var(--sans);
+}
+.gb-cart-count.show { display:flex; }
+
+/* ── ORDER MODAL ── */
+.gb-order-overlay {
+  position:fixed; inset:0; z-index:9900;
+  background:rgba(0,0,0,0.78);
+  backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity 0.3s; padding:16px;
+}
+.gb-order-overlay.open { opacity:1; pointer-events:auto; }
+.gb-order-modal {
+  background:var(--bg2);
+  border:1px solid var(--border);
+  width:100%; max-width:480px;
+  border-radius:4px; overflow:hidden;
+  transform:translateY(20px);
+  transition:transform 0.3s;
+  max-height:90vh; overflow-y:auto;
+}
+.gb-order-overlay.open .gb-order-modal { transform:translateY(0); }
+.gb-order-header {
+  padding:20px 24px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.gb-order-title {
+  font-family:var(--serif);
+  font-size:22px; font-weight:300; color:var(--cream);
+}
+.gb-modal-close {
+  background:none; border:none; cursor:pointer;
+  color:var(--muted); font-size:24px; transition:color 0.25s; line-height:1;
+}
+.gb-modal-close:hover { color:var(--cream); }
+.gb-order-body { padding:22px 24px; }
+.gb-order-summary { margin-bottom:20px; }
+.gb-order-summary-row {
+  display:flex; justify-content:space-between;
+  font-size:13px; color:var(--muted);
+  padding:8px 0; border-bottom:1px solid var(--border);
+}
+.gb-order-summary-row.total {
+  color:var(--cream); font-weight:400;
+  border-bottom:none; padding-top:12px;
+}
+.gb-order-summary-row.total span:last-child { color:var(--gold); font-family:var(--serif); font-size:18px; }
+.gb-form-field { margin-bottom:14px; }
+.gb-form-label { display:block; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.gb-form-input {
+  width:100%; padding:11px 14px;
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:3px;
+  color:var(--cream);
+  font-family:var(--sans); font-size:14px;
+  transition:border-color 0.25s;
+  outline:none;
+}
+.gb-form-input:focus { border-color:var(--gold); }
+.gb-form-textarea { resize:vertical; min-height:80px; }
+.gb-form-submit {
+  width:100%; padding:14px;
+  background:var(--gold); color:#0f0d0a;
+  border:none; cursor:pointer; font-family:var(--sans);
+  font-size:12px; font-weight:500; letter-spacing:0.12em;
+  text-transform:uppercase; border-radius:3px;
+  transition:background 0.25s; margin-top:6px;
+}
+.gb-form-submit:hover { background:var(--gold-lt); }
+.gb-form-success { text-align:center; padding:32px 0 8px; display:none; }
+.gb-form-success-icon { font-size:44px; margin-bottom:12px; }
+.gb-form-success h3 {
+  font-family:var(--serif); font-size:24px; font-weight:300;
+  color:var(--cream); margin-bottom:8px;
+}
+.gb-form-success p { color:var(--muted); font-size:13px; }
+
+/* ── PRODUCT MODAL ── */
+.gb-prod-overlay {
+  position:fixed; inset:0; z-index:9850;
+  background:rgba(0,0,0,0.82);
+  backdrop-filter:blur(8px);
+  display:flex; align-items:flex-end; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity 0.3s;
+}
+.gb-prod-overlay.open { opacity:1; pointer-events:auto; }
+.gb-prod-modal {
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:12px 12px 0 0;
+  width:100%; max-width:520px;
+  transform:translateY(30px);
+  transition:transform 0.35s;
+  max-height:90vh; overflow-y:auto;
+  overflow-x:hidden;
+}
+.gb-prod-overlay.open .gb-prod-modal { transform:translateY(0); }
+.gb-prod-modal-img-wrap { position:relative; height:220px; overflow:hidden; }
+.gb-prod-modal-img { width:100%; height:100%; object-fit:cover; display:block; }
+.gb-pm-close {
+  position:absolute; top:12px; right:12px;
+  background:rgba(15,13,10,0.7); border:1px solid var(--border);
+  color:var(--cream); width:34px; height:34px; border-radius:50%;
+  font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:background 0.25s;
+}
+.gb-pm-badge {
+  position:absolute; top:14px; left:14px;
+  background:var(--gold); color:#0f0d0a;
+  font-size:9px; font-weight:500; letter-spacing:0.1em;
+  text-transform:uppercase; padding:4px 10px; border-radius:2px;
+}
+.gb-prod-modal-body { padding:22px 20px 28px; }
+.gb-pm-cat { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+.gb-pm-name {
+  font-family:var(--serif); font-size:26px;
+  font-weight:300; color:var(--cream); line-height:1.15; margin-bottom:12px;
+}
+.gb-pm-desc { font-size:13px; color:var(--muted); line-height:1.7; margin-bottom:16px; }
+.gb-pm-meta { border-top:1px solid var(--border); padding-top:14px; margin-bottom:16px; }
+.gb-pm-meta-row {
+  display:flex; justify-content:space-between;
+  font-size:12px; padding:5px 0;
+}
+.gb-pm-meta-row span:first-child { color:var(--muted); }
+.gb-pm-meta-row span:last-child { color:var(--cream); }
+.gb-pm-price { font-family:var(--serif); font-size:32px; font-weight:300; color:var(--gold); line-height:1; }
+.gb-pm-unit { font-size:12px; color:var(--muted); margin-bottom:18px; }
+.gb-pm-qty { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+.gb-pm-qty-label { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
+.gb-pm-qty-ctrl { display:flex; align-items:center; gap:10px; }
+.gb-pm-qty-btn {
+  width:30px; height:30px;
+  border:1px solid var(--border); background:none;
+  color:var(--gold-lt); cursor:pointer; font-size:17px;
+  border-radius:2px; display:flex; align-items:center; justify-content:center;
+  transition:all 0.25s;
+}
+.gb-pm-qty-btn:hover { border-color:var(--gold); }
+.gb-pm-qty-num { font-size:17px; color:var(--cream); min-width:24px; text-align:center; }
+.gb-pm-add-btn {
+  width:100%; padding:14px;
+  background:var(--gold); color:#0f0d0a;
+  border:none; cursor:pointer; font-family:var(--sans);
+  font-size:12px; font-weight:500; letter-spacing:0.12em;
+  text-transform:uppercase; border-radius:3px; transition:background 0.25s;
+}
+.gb-pm-add-btn:hover { background:var(--gold-lt); }
+.gb-pm-add-btn.added { background:rgba(201,169,110,0.2); color:var(--gold); border:1px solid var(--gold); }
+
+/* ── FOOTER ── */
+.gb-footer {
+  background:var(--bg);
+  border-top:1px solid var(--border);
+  padding:36px 22px;
+  text-align:center;
+}
+.gb-footer-logo { font-family:var(--serif); font-size:20px; color:var(--gold-lt); margin-bottom:10px; }
+.gb-footer-copy { font-size:11px; color:var(--muted); margin-bottom:16px; }
+.gb-footer-links { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+.gb-footer-links a {
+  font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--muted); text-decoration:none; transition:color 0.25s;
+}
+.gb-footer-links a:hover { color:var(--gold); }
+
+/* ── TG WIDGET ── */
+.gb-tg-widget {
+  position:fixed; right:18px; bottom:72px; z-index:9701;
+  display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+}
+.gb-tg-bubble {
+  background:var(--bg2); border:1px solid var(--border);
+  padding:10px 14px; border-radius:10px 10px 0 10px;
+  font-size:13px; color:var(--cream); max-width:180px; line-height:1.4;
+  opacity:0; transform:translateY(6px) scale(0.95);
+  transition:opacity 0.35s, transform 0.35s; pointer-events:none;
+}
+.gb-tg-bubble.show { opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+.gb-tg-btn {
+  width:50px; height:50px; border-radius:50%;
+  background:#0088cc; color:#fff; border:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 18px rgba(0,136,204,0.4);
+  transition:transform 0.25s, box-shadow 0.25s;
+}
+.gb-tg-btn:hover { transform:scale(1.08); box-shadow:0 6px 26px rgba(0,136,204,0.55); }
+
+/* ── REVEAL ── */
+.gb-reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
+.gb-reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ── KEYFRAMES ── */
+@keyframes gb-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+@keyframes gb-marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes gb-fadein { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── DESKTOP OVERRIDES ── */
+@media (min-width:640px) {
+  .gb-hero { min-height:560px; max-height:700px; padding:36px 52px 60px; }
+  .gb-section { padding:80px 52px; }
+  .gb-about-img-wrap { height:360px; }
+  .gb-menu-grid { grid-template-columns:1fr 1fr; }
+  .gb-catalog-grid { grid-template-columns:repeat(3,1fr); }
+  .gb-prod-img-wrap { height:180px; }
+  .gb-how-grid { grid-template-columns:repeat(4,1fr); }
+  .gb-reviews-list { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .gb-conditions-grid { grid-template-columns:1fr 1fr; }
+  .gb-cta-actions { flex-direction:row; justify-content:center; }
+  .gb-cta-actions .gb-btn { width:auto; }
+  .gb-quiz-rec-cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+  .gb-quiz-rec-card { flex-direction:column; }
+  .gb-quiz-rec-add { width:100%; }
+  .gb-sticky-text { display:block; }
+}
+</style>
+
+<!-- ╔══════════════════╗ -->
+<!-- ║   РАЗМЕТКА HTML  ║ -->
+<!-- ╚══════════════════╝ -->
+
+<div id="gb-root">
+
+<!-- HERO -->
+<section class="gb-hero">
+  <div class="gb-hero-bg"></div>
+  <div class="gb-hero-badge">Санкт-Петербург · Фуршетная студия</div>
+  <h1>Фуршет, который<br>запомнят <em>гости</em></h1>
+  <p class="gb-hero-sub">Авторские гастробоксы с изысканными закусками — для корпоративов, свадеб и частных праздников.</p>
+  <div class="gb-hero-actions">
+    <button class="gb-btn gb-btn-primary" onclick="document.getElementById('gb-quiz').scrollIntoView({behavior:'smooth'})">Подобрать меню →</button>
+    <button class="gb-btn gb-btn-ghost" onclick="document.getElementById('gb-catalog').scrollIntoView({behavior:'smooth'})">Смотреть каталог</button>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="gb-marquee-wrap">
+  <div class="gb-marquee-track">
+    <div class="gb-marquee-item">Канапе</div><div class="gb-marquee-item">Тарталетки</div><div class="gb-marquee-item">Брускетты</div><div class="gb-marquee-item">Профитроли</div><div class="gb-marquee-item">Бранчи</div><div class="gb-marquee-item">Детское меню</div><div class="gb-marquee-item">Горячее</div><div class="gb-marquee-item">Десерты</div><div class="gb-marquee-item">Салаты</div><div class="gb-marquee-item">Сет в рюмочках</div>
+    <div class="gb-marquee-item">Канапе</div><div class="gb-marquee-item">Тарталетки</div><div class="gb-marquee-item">Брускетты</div><div class="gb-marquee-item">Профитроли</div><div class="gb-marquee-item">Бранчи</div><div class="gb-marquee-item">Детское меню</div><div class="gb-marquee-item">Горячее</div><div class="gb-marquee-item">Десерты</div><div class="gb-marquee-item">Салаты</div><div class="gb-marquee-item">Сет в рюмочках</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="gb-about gb-section" id="gb-about">
+  <div class="gb-about-img-wrap gb-reveal">
+    <img class="gb-about-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=85" alt="Анна за работой" loading="lazy">
+    <div class="gb-about-year"><span>5+</span><span>лет</span></div>
+  </div>
+  <div class="gb-about-text">
+    <p class="gb-section-label gb-reveal">О студии</p>
+    <h2 class="gb-section-title gb-reveal">Меня зовут Анна.<br>Я создаю <em>праздники</em></h2>
+    <p class="gb-reveal">Если вы хотите, чтобы ваш праздник прошёл красиво, спокойно и без неприятных сюрпризов — вы по адресу.</p>
+    <p class="gb-reveal">Эстетичный стол как из Pinterest, вкусные закуски, сытые и довольные гости. <strong>Вам не придётся переживать ни о чём.</strong></p>
+    <div class="gb-stats gb-reveal">
+      <div class="gb-stat"><div class="gb-stat-num">300+</div><div class="gb-stat-label">мероприятий</div></div>
+      <div class="gb-stat"><div class="gb-stat-num">50+</div><div class="gb-stat-label">позиций в меню</div></div>
+      <div class="gb-stat"><div class="gb-stat-num">100%</div><div class="gb-stat-label">довольных клиентов</div></div>
+      <div class="gb-stat"><div class="gb-stat-num">24 ч</div><div class="gb-stat-label">минимальный срок</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU CATEGORIES -->
+<section class="gb-menu gb-section" id="gb-menu">
+  <div class="gb-menu-header">
+    <p class="gb-section-label gb-reveal">Популярное</p>
+    <h2 class="gb-section-title gb-reveal">Категории <em>меню</em></h2>
+  </div>
+  <div class="gb-menu-grid">
+    <div class="gb-menu-card gb-reveal">
+      <div class="gb-card-num">01</div>
+      <div class="gb-card-name">Тарталетки и корзинки</div>
+      <div class="gb-card-desc">Хрустящая основа с авторскими начинками: лосось, краб, трюфельный крем, овощи гриль</div>
+      <div class="gb-card-price">от 280 ₽ <span>/ шт</span></div>
+      <button class="gb-card-add-btn" onclick="gbScrollToCatalog('tartlets')">Смотреть →</button>
+    </div>
+    <div class="gb-menu-card gb-reveal">
+      <div class="gb-card-num">02</div>
+      <div class="gb-card-name">Канапе и брускетты</div>
+      <div class="gb-card-desc">Миниатюрные закуски на хлебной основе с морепродуктами, мясными и вегетарианскими начинками</div>
+      <div class="gb-card-price">от 180 ₽ <span>/ шт</span></div>
+      <button class="gb-card-add-btn" onclick="gbScrollToCatalog('canape')">Смотреть →</button>
+    </div>
+    <div class="gb-menu-card gb-reveal">
+      <div class="gb-card-num">03</div>
+      <div class="gb-card-name">Гастробоксы и бранчи</div>
+      <div class="gb-card-desc">Готовые боксы — сырные, мясные, универсальные. Идеально как подарок или центр фуршетного стола</div>
+      <div class="gb-card-price">от 3 200 ₽ <span>/ бокс</span></div>
+      <button class="gb-card-add-btn" onclick="gbScrollToCatalog('brunch')">Смотреть →</button>
+    </div>
+    <div class="gb-menu-card gb-reveal">
+      <div class="gb-card-num">04</div>
+      <div class="gb-card-name">Горячее и десерты</div>
+      <div class="gb-card-desc">Куриные шашлычки, лангустины Панко, мини-вафли с пломбиром, панакота, тирамису</div>
+      <div class="gb-card-price">от 180 ₽ <span>/ шт</span></div>
+      <button class="gb-card-add-btn" onclick="gbScrollToCatalog('hot')">Смотреть →</button>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="gb-catalog gb-section" id="gb-catalog">
+  <p class="gb-section-label gb-reveal">Каталог</p>
+  <h2 class="gb-section-title gb-reveal">Вся <em>номенклатура</em></h2>
+  <div class="gb-catalog-tabs gb-reveal" id="gb-catalog-tabs"></div>
+  <div class="gb-catalog-grid" id="gb-catalog-grid"></div>
+</section>
+
+<!-- HOW -->
+<section class="gb-how gb-section" id="gb-how">
+  <p class="gb-section-label gb-reveal">Как заказать</p>
+  <h2 class="gb-section-title gb-reveal">Просто и быстро —<br><em>4 шага</em></h2>
+  <div class="gb-how-grid">
+    <div class="gb-how-step gb-reveal">
+      <div class="gb-step-num">1</div>
+      <div class="gb-step-title">Напишите мне</div>
+      <div class="gb-step-text">В Telegram или Instagram. Расскажите про мероприятие: дата, количество гостей, бюджет.</div>
+    </div>
+    <div class="gb-how-step gb-reveal">
+      <div class="gb-step-num">2</div>
+      <div class="gb-step-title">Выбираем меню</div>
+      <div class="gb-step-text">Я предложу состав боксов под ваш праздник. Можно скомпоновать своё.</div>
+    </div>
+    <div class="gb-how-step gb-reveal">
+      <div class="gb-step-num">3</div>
+      <div class="gb-step-title">Предоплата 50%</div>
+      <div class="gb-step-text">Подтверждаем заказ и бронируем дату. Остаток — при получении.</div>
+    </div>
+    <div class="gb-how-step gb-reveal">
+      <div class="gb-step-num">4</div>
+      <div class="gb-step-title">Наслаждайтесь</div>
+      <div class="gb-step-text">Я привожу всё вовремя и раскладываю. Вы принимаете комплименты от гостей.</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="gb-reviews gb-section" id="gb-reviews">
+  <p class="gb-section-label gb-reveal">Отзывы</p>
+  <h2 class="gb-section-title gb-reveal">Что говорят<br><em>клиенты</em></h2>
+  <div class="gb-reviews-list">
+    <div class="gb-review-card gb-reveal">
+      <div class="gb-review-stars">★★★★★</div>
+      <div class="gb-review-text">«Анна сделала невероятный стол на наш корпоратив. Гости до сих пор спрашивают, где мы заказывали — всё было как из ресторана!»</div>
+      <div class="gb-review-author"><strong>Марина К.</strong>Корпоратив, 40 человек</div>
+    </div>
+    <div class="gb-review-card gb-reveal">
+      <div class="gb-review-stars">★★★★★</div>
+      <div class="gb-review-text">«Заказывала на свадьбу. Всё приехало вовремя, выглядело потрясающе. Тарталетки с икрой разлетелись за 15 минут.»</div>
+      <div class="gb-review-author"><strong>Ольга М.</strong>Свадьба, 60 человек</div>
+    </div>
+    <div class="gb-review-card gb-reveal">
+      <div class="gb-review-stars">★★★★★</div>
+      <div class="gb-review-text">«Уже третий раз заказываю. Анна всегда предлагает что-то новое, слушает пожелания. Такой уровень сервиса встречается редко.»</div>
+      <div class="gb-review-author"><strong>Дмитрий Л.</strong>День рождения, 25 человек</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITIONS -->
+<section class="gb-conditions gb-section">
+  <p class="gb-section-label gb-reveal">Условия работы</p>
+  <h2 class="gb-section-title gb-reveal">Прозрачно<br>и <em>удобно</em></h2>
+  <div class="gb-conditions-grid">
+    <div class="gb-cond-item gb-reveal"><div class="gb-cond-icon">◈</div><div><div class="gb-cond-title">Предоплата 50%</div><div class="gb-cond-text">При подтверждении. Остаток — при доставке или самовывозе.</div></div></div>
+    <div class="gb-cond-item gb-reveal"><div class="gb-cond-icon">◈</div><div><div class="gb-cond-title">Минимальный заказ</div><div class="gb-cond-text">Минимальные количества указаны для каждой позиции. Можно комбинировать.</div></div></div>
+    <div class="gb-cond-item gb-reveal"><div class="gb-cond-icon">◈</div><div><div class="gb-cond-title">Доставка по СПб</div><div class="gb-cond-text">Доставка или самовывоз. Стоимость обсуждается индивидуально.</div></div></div>
+    <div class="gb-cond-item gb-reveal"><div class="gb-cond-icon">◈</div><div><div class="gb-cond-title">Срок заказа</div><div class="gb-cond-text">Принимаем заказы от 24 часов. Для крупных мероприятий — 3–5 дней.</div></div></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="gb-quiz gb-section" id="gb-quiz">
+  <p class="gb-section-label gb-reveal">Квиз</p>
+  <h2 class="gb-section-title gb-reveal">Подберём меню<br><em>за 1 минуту</em></h2>
+  <div class="gb-quiz-progress" id="gb-quiz-progress">
+    <div class="gb-quiz-dot done"></div>
+    <div class="gb-quiz-dot"></div>
+    <div class="gb-quiz-dot"></div>
+    <div class="gb-quiz-dot"></div>
+  </div>
+
+  <div class="gb-quiz-step active" data-step="1">
+    <div class="gb-quiz-q">Какой <em>повод</em>?</div>
+    <div class="gb-quiz-options">
+      <button class="gb-quiz-option" data-val="corp"><div class="gb-quiz-opt-icon">🏢</div><div class="gb-quiz-opt-label">Корпоратив</div><div class="gb-quiz-opt-desc">Офис или выездное</div></button>
+      <button class="gb-quiz-option" data-val="wedding"><div class="gb-quiz-opt-icon">💍</div><div class="gb-quiz-opt-label">Свадьба</div><div class="gb-quiz-opt-desc">Фуршет или банкет</div></button>
+      <button class="gb-quiz-option" data-val="birthday"><div class="gb-quiz-opt-icon">🎂</div><div class="gb-quiz-opt-label">День рождения</div><div class="gb-quiz-opt-desc">Домашний или выездной</div></button>
+      <button class="gb-quiz-option" data-val="gift"><div class="gb-quiz-opt-icon">🎁</div><div class="gb-quiz-opt-label">Подарок / бранч</div><div class="gb-quiz-opt-desc">Гастробокс как подарок</div></button>
+    </div>
+    <div class="gb-quiz-nav"><span></span><button class="gb-quiz-next" data-next="2" disabled>Далее →</button></div>
+  </div>
+
+  <div class="gb-quiz-step" data-step="2">
+    <div class="gb-quiz-q">Сколько <em>гостей</em>?</div>
+    <div class="gb-quiz-options">
+      <button class="gb-quiz-option" data-val="small"><div class="gb-quiz-opt-icon">👥</div><div class="gb-quiz-opt-label">До 15 человек</div><div class="gb-quiz-opt-desc">Камерный формат</div></button>
+      <button class="gb-quiz-option" data-val="medium"><div class="gb-quiz-opt-icon">👨‍👩‍👧‍👦</div><div class="gb-quiz-opt-label">15–40 человек</div><div class="gb-quiz-opt-desc">Средний фуршет</div></button>
+      <button class="gb-quiz-option" data-val="large"><div class="gb-quiz-opt-icon">🎉</div><div class="gb-quiz-opt-label">40–100 человек</div><div class="gb-quiz-opt-desc">Большое мероприятие</div></button>
+      <button class="gb-quiz-option" data-val="xlarge"><div class="gb-quiz-opt-icon">🏛️</div><div class="gb-quiz-opt-label">100+ человек</div><div class="gb-quiz-opt-desc">Масштабный банкет</div></button>
+    </div>
+    <div class="gb-quiz-nav"><button class="gb-quiz-back" data-prev="1">← Назад</button><button class="gb-quiz-next" data-next="3" disabled>Далее →</button></div>
+  </div>
+
+  <div class="gb-quiz-step" data-step="3">
+    <div class="gb-quiz-q">Что важнее <em>всего</em>?</div>
+    <div class="gb-quiz-options">
+      <button class="gb-quiz-option" data-val="wow"><div class="gb-quiz-opt-icon">✨</div><div class="gb-quiz-opt-label">Wow-эффект</div><div class="gb-quiz-opt-desc">Гости должны ахнуть</div></button>
+      <button class="gb-quiz-option" data-val="value"><div class="gb-quiz-opt-icon">💰</div><div class="gb-quiz-opt-label">Цена/качество</div><div class="gb-quiz-opt-desc">Вкусно и без переплат</div></button>
+      <button class="gb-quiz-option" data-val="variety"><div class="gb-quiz-opt-icon">🍱</div><div class="gb-quiz-opt-label">Разнообразие</div><div class="gb-quiz-opt-desc">Много разных вкусов</div></button>
+      <button class="gb-quiz-option" data-val="hot"><div class="gb-quiz-opt-icon">🔥</div><div class="gb-quiz-opt-label">Горячее</div><div class="gb-quiz-opt-desc">Тёплая еда обязательна</div></button>
+    </div>
+    <div class="gb-quiz-nav"><button class="gb-quiz-back" data-prev="2">← Назад</button><button class="gb-quiz-next" data-next="4" disabled>Далее →</button></div>
+  </div>
+
+  <div class="gb-quiz-step" data-step="4">
+    <div class="gb-quiz-q">Бюджет на <em>человека</em>?</div>
+    <div class="gb-quiz-options">
+      <button class="gb-quiz-option" data-val="budget"><div class="gb-quiz-opt-icon">💳</div><div class="gb-quiz-opt-label">до 500 ₽</div><div class="gb-quiz-opt-desc">Оптимальный</div></button>
+      <button class="gb-quiz-option" data-val="mid"><div class="gb-quiz-opt-icon">💎</div><div class="gb-quiz-opt-label">500–1000 ₽</div><div class="gb-quiz-opt-desc">Хороший выбор</div></button>
+      <button class="gb-quiz-option" data-val="premium"><div class="gb-quiz-opt-icon">👑</div><div class="gb-quiz-opt-label">1000–2000 ₽</div><div class="gb-quiz-opt-desc">Премиум</div></button>
+      <button class="gb-quiz-option" data-val="luxury"><div class="gb-quiz-opt-icon">🌟</div><div class="gb-quiz-opt-label">от 2000 ₽</div><div class="gb-quiz-opt-desc">Без ограничений</div></button>
+    </div>
+    <div class="gb-quiz-nav"><button class="gb-quiz-back" data-prev="3">← Назад</button><button class="gb-quiz-next" data-next="result" disabled>Подобрать меню ✨</button></div>
+  </div>
+
+  <div class="gb-quiz-result" id="gb-quiz-result">
+    <div class="gb-quiz-result-label">Ваша подборка готова</div>
+    <h3 class="gb-quiz-result-title">Рекомендуем <em>эти боксы</em></h3>
+    <div class="gb-quiz-rec-cards" id="gb-quiz-rec-cards"></div>
+    <button class="gb-btn gb-btn-primary" onclick="gbOpenOrderModal()">Оформить заказ →</button>
+    <button class="gb-quiz-restart" id="gb-quiz-restart">Пройти заново</button>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="gb-cta gb-section" id="gb-contact">
+  <p class="gb-section-label gb-reveal">Контакты</p>
+  <h2 class="gb-section-title gb-reveal">Готовы обсудить<br><em>ваш праздник?</em></h2>
+  <p class="gb-reveal">Напишите — отвечу быстро и помогу подобрать идеальное меню</p>
+  <div class="gb-cta-actions gb-reveal">
+    <a href="https://t.me/gastrobuffet_spb" class="gb-btn gb-btn-tg">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.12 14.09l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.47z"/></svg>
+      Telegram
+    </a>
+    <a href="https://instagram.com/gastrobuffet.spb" class="gb-btn gb-btn-ig">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      Instagram
+    </a>
+    <button class="gb-btn gb-btn-ghost" onclick="gbOpenOrderModal()">☎ Оформить заказ</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="gb-footer">
+  <div class="gb-footer-logo">Анна · Фуршетная студия</div>
+  <div class="gb-footer-copy">© 2024 · Санкт-Петербург</div>
+  <nav class="gb-footer-links">
+    <a href="#gb-about">О студии</a>
+    <a href="#gb-catalog">Каталог</a>
+    <a href="#gb-quiz">Квиз</a>
+    <a href="#gb-contact">Контакты</a>
+  </nav>
+</footer>
+
+<!-- CART OVERLAY + DRAWER -->
+<div class="gb-cart-overlay" id="gb-cart-overlay"></div>
+<div class="gb-cart-drawer" id="gb-cart-drawer">
+  <div class="gb-cart-header">
+    <div class="gb-cart-title">Корзина</div>
+    <button class="gb-cart-close" id="gb-cart-close">×</button>
+  </div>
+  <div class="gb-cart-items" id="gb-cart-items">
+    <div class="gb-cart-empty">Корзина пуста</div>
+  </div>
+  <div class="gb-cart-footer">
+    <div class="gb-cart-total">
+      <span class="gb-cart-total-label">Итого</span>
+      <span class="gb-cart-total-sum" id="gb-cart-total-sum">0 ₽</span>
+    </div>
+    <div class="gb-cart-note">Минимальные количества указаны в карточке товара</div>
+    <button class="gb-cart-checkout-btn" onclick="gbCloseCart();gbOpenOrderModal()">Оформить заказ →</button>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="gb-prod-overlay" id="gb-prod-overlay">
+  <div class="gb-prod-modal">
+    <div class="gb-prod-modal-img-wrap">
+      <img class="gb-prod-modal-img" id="gb-pm-img" src="" alt="">
+      <button class="gb-pm-close" id="gb-pm-close">×</button>
+      <div class="gb-pm-badge" id="gb-pm-badge" style="display:none"></div>
+    </div>
+    <div class="gb-prod-modal-body">
+      <div class="gb-pm-cat" id="gb-pm-cat"></div>
+      <div class="gb-pm-name" id="gb-pm-name"></div>
+      <div class="gb-pm-desc" id="gb-pm-desc"></div>
+      <div class="gb-pm-meta" id="gb-pm-meta"></div>
+      <div class="gb-pm-price" id="gb-pm-price"></div>
+      <div class="gb-pm-unit" id="gb-pm-unit"></div>
+      <div class="gb-pm-qty">
+        <span class="gb-pm-qty-label">Количество</span>
+        <div class="gb-pm-qty-ctrl">
+          <button class="gb-pm-qty-btn" id="gb-pm-minus">−</button>
+          <span class="gb-pm-qty-num" id="gb-pm-qty">1</span>
+          <button class="gb-pm-qty-btn" id="gb-pm-plus">+</button>
+        </div>
+      </div>
+      <button class="gb-pm-add-btn" id="gb-pm-add-btn">+ Добавить в корзину</button>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="gb-order-overlay" id="gb-order-overlay">
+  <div class="gb-order-modal">
+    <div class="gb-order-header">
+      <div class="gb-order-title">Оформить заказ</div>
+      <button class="gb-modal-close" id="gb-order-close">×</button>
+    </div>
+    <div class="gb-order-body">
+      <div class="gb-order-summary" id="gb-order-summary"></div>
+      <div id="gb-order-form-wrap">
+        <div class="gb-form-field">
+          <label class="gb-form-label">Ваше имя *</label>
+          <input class="gb-form-input" id="gb-f-name" type="text" placeholder="Как к вам обращаться?">
+        </div>
+        <div class="gb-form-field">
+          <label class="gb-form-label">Телефон *</label>
+          <input class="gb-form-input" id="gb-f-phone" type="tel" placeholder="+7 (___) ___-__-__">
+        </div>
+        <div class="gb-form-field">
+          <label class="gb-form-label">Дата мероприятия</label>
+          <input class="gb-form-input" id="gb-f-date" type="date">
+        </div>
+        <div class="gb-form-field">
+          <label class="gb-form-label">Количество гостей</label>
+          <input class="gb-form-input" id="gb-f-guests" type="number" placeholder="Например: 30">
+        </div>
+        <div class="gb-form-field">
+          <label class="gb-form-label">Комментарий</label>
+          <textarea class="gb-form-input gb-form-textarea" id="gb-f-comment" placeholder="Пожелания, особые требования..."></textarea>
+        </div>
+        <button class="gb-form-submit" onclick="gbSubmitOrder()">Отправить заявку →</button>
+      </div>
+      <div class="gb-form-success" id="gb-order-success">
+        <div class="gb-form-success-icon">🎉</div>
+        <h3>Заявка отправлена!</h3>
+        <p>Свяжусь с вами в течение 30 минут для уточнения деталей</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</div><!-- /#gb-root -->
+
+<script>
+(function() {
+'use strict';
+
+// ── DATA ──
+const GB_CATEGORIES = [
+  { id:'all', label:'Все' },
+  { id:'tartlets', label:'Тарталетки' },
+  { id:'canape', label:'Канапе' },
+  { id:'bruschetta', label:'Брускетты' },
+  { id:'brunch', label:'Бранчи' },
+  { id:'hot', label:'Горячее' },
+  { id:'dessert', label:'Десерты' },
+  { id:'salad', label:'Салаты' },
+];
+const GB_CAT_LABELS = { tartlets:'Тарталетки', canape:'Канапе', bruschetta:'Брускетты', brunch:'Бранчи', hot:'Горячее', dessert:'Десерты', salad:'Салаты' };
+const GB_PRODUCTS = [
+  { id:1,  cat:'tartlets',  name:'Тарталетки с лососем',    desc:'Хрустящая корзинка, сливочный крем-чиз, красная икра, нежный лосось', price:420, unit:'шт', min:20, img:'https://images.unsplash.com/photo-1551183053-bf91798d27b0?w=400&q=80', badge:'Хит' },
+  { id:2,  cat:'tartlets',  name:'Тарталетки с крабом',     desc:'Крабовое мясо, авокадо, лёгкий соус, микрозелень', price:390, unit:'шт', min:20, img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80', badge:null },
+  { id:3,  cat:'tartlets',  name:'Тарталетки Капрезе',      desc:'Томаты черри, моцарелла буффало, базиль, соус песто', price:310, unit:'шт', min:20, img:'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80', badge:null },
+  { id:4,  cat:'tartlets',  name:'Тарталетки с перцем',     desc:'Крем из печёного перца, козий сыр, кедровые орешки', price:280, unit:'шт', min:20, img:'https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=400&q=80', badge:null },
+  { id:5,  cat:'canape',    name:'Канапе «Под крепкое»',    desc:'Бородинский хлеб, сало, малосольный огурец, горчица', price:180, unit:'шт', min:30, img:'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80', badge:null },
+  { id:6,  cat:'canape',    name:'Канапе «Нежность»',       desc:'Белый хлеб, рикотта, инжир, мёд, грецкий орех', price:220, unit:'шт', min:30, img:'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=400&q=80', badge:'Новинка' },
+  { id:7,  cat:'canape',    name:'Канапе «Рыбка»',          desc:'Ржаной хлеб, форель холодного копчения, крем-чиз, каперсы', price:260, unit:'шт', min:30, img:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&q=80', badge:null },
+  { id:8,  cat:'canape',    name:'Канапе «Капрезе»',        desc:'Чиабатта, томаты черри, моцарелла, базилик, бальзамик', price:200, unit:'шт', min:30, img:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80', badge:null },
+  { id:9,  cat:'bruschetta',name:'Брускетта с авокадо',     desc:'Тост, авокадо, яйцо пашот, редис, микрозелень', price:290, unit:'шт', min:15, img:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&q=80', badge:'Хит' },
+  { id:10, cat:'bruschetta',name:'Брускетта с говядиной',   desc:'Чиабатта, ростбиф, соус Дор Блю, руккола, помидор', price:360, unit:'шт', min:15, img:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', badge:null },
+  { id:11, cat:'bruschetta',name:'Брускетта с козьим сыром',desc:'Тост, козий сыр, мёд, грецкий орех, тимьян', price:270, unit:'шт', min:15, img:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80', badge:null },
+  { id:12, cat:'brunch',    name:'Бокс «Сырный»',           desc:'Ассорти из 5 сортов сыра, виноград, орехи, мёд, крекеры. 30×30 см', price:3200, unit:'бокс', min:1, img:'https://images.unsplash.com/photo-1452195100486-9cc805987862?w=400&q=80', badge:'Популярный' },
+  { id:13, cat:'brunch',    name:'Бокс «Мясной»',           desc:'Хамон, прошутто, пепперони, салями, горчица, хлеб. 30×30 см', price:3800, unit:'бокс', min:1, img:'https://images.unsplash.com/photo-1544025162-d76594e8bb5c?w=400&q=80', badge:null },
+  { id:14, cat:'brunch',    name:'Бокс «Универсальный»',    desc:'Сыры, колбасы, фрукты, орехи, соусы, хлеб. 37×37 см', price:5200, unit:'бокс', min:1, img:'https://images.unsplash.com/photo-1559181567-c3190bba0f2a?w=400&q=80', badge:null },
+  { id:15, cat:'hot',       name:'Куриные шашлычки',        desc:'Куриное филе в маринаде, соус терияки или барбекю', price:320, unit:'шт', min:20, img:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=400&q=80', badge:null },
+  { id:16, cat:'hot',       name:'Лангустины Панко',        desc:'Лангустины в хрустящей панировке, соус айоли', price:480, unit:'шт', min:15, img:'https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&q=80', badge:'Премиум' },
+  { id:17, cat:'hot',       name:'Крылышки Терияки',        desc:'Куриные крылышки в соусе терияки, кунжут, зелёный лук', price:280, unit:'шт', min:20, img:'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400&q=80', badge:'Хит' },
+  { id:18, cat:'hot',       name:'Картофель деревенский',   desc:'Запечённый картофель с розмарином и чесночным соусом', price:180, unit:'порц', min:20, img:'https://images.unsplash.com/photo-1501200291289-c5a76c232e5f?w=400&q=80', badge:null },
+  { id:19, cat:'dessert',   name:'Мини-вафли с пломбиром',  desc:'Хрустящие вафли, ванильный пломбир, ягодный соус', price:250, unit:'шт', min:20, img:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80', badge:'Хит' },
+  { id:20, cat:'dessert',   name:'Панакота',                desc:'Классическая сливочная панакота с ягодным кули', price:230, unit:'шт', min:15, img:'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400&q=80', badge:null },
+  { id:21, cat:'dessert',   name:'Тирамису мини',           desc:'Классический тирамису порционный, в стаканчике', price:280, unit:'шт', min:15, img:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&q=80', badge:null },
+  { id:22, cat:'dessert',   name:'Трайфл мини',             desc:'Бисквит, ягодный мусс, сливочный крем, свежие ягоды', price:260, unit:'шт', min:15, img:'https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400&q=80', badge:'Новинка' },
+  { id:23, cat:'salad',     name:'Салат Нисуаз',            desc:'Тунец, стручковая фасоль, яйцо, маслины, помидоры черри', price:290, unit:'порц', min:10, img:'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&q=80', badge:null },
+  { id:24, cat:'salad',     name:'Салат Цезарь',            desc:'Хрустящие листья, курица, пармезан, крутоны, соус Цезарь', price:270, unit:'порц', min:10, img:'https://images.unsplash.com/photo-1512852939750-1305098529bf?w=400&q=80', badge:'Хит' },
+];
+
+// ── STATE ──
+let gbCart = {};
+let gbActiveCat = 'all';
+let gbPmId = null;
+let gbPmQty = 1;
+const gbQuizAnswers = {};
+
+// ── UTILS ──
+function gbFmt(n) { return n.toLocaleString('ru'); }
+function gbEl(id) { return document.getElementById(id); }
+
+// ── CATALOG ──
+function gbRenderTabs() {
+  const el = gbEl('gb-catalog-tabs');
+  el.innerHTML = GB_CATEGORIES.map(c =>
+    `<button class="gb-cat-tab${c.id===gbActiveCat?' active':''}" data-cat="${c.id}">${c.label}</button>`
+  ).join('');
+  el.querySelectorAll('.gb-cat-tab').forEach(btn => {
+    btn.addEventListener('click', function() {
+      gbActiveCat = this.dataset.cat;
+      el.querySelectorAll('.gb-cat-tab').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      gbRenderGrid();
+    });
+  });
+}
+
+function gbRenderGrid() {
+  const el = gbEl('gb-catalog-grid');
+  const items = gbActiveCat === 'all' ? GB_PRODUCTS : GB_PRODUCTS.filter(p => p.cat === gbActiveCat);
+  if (!items.length) { el.innerHTML = '<div class="gb-catalog-empty">Позиций не найдено</div>'; return; }
+  el.innerHTML = items.map(p => `
+    <div class="gb-prod-card">
+      <div class="gb-prod-img-wrap" onclick="gbOpenProdModal(${p.id})">
+        <img class="gb-prod-img" src="${p.img}" alt="${p.name}" loading="lazy"
+          onerror="this.parentElement.innerHTML='<div class=\\'gb-prod-img-placeholder\\'>🍽️</div>'">
+        ${p.badge ? `<div class="gb-prod-badge">${p.badge}</div>` : ''}
+      </div>
+      <div class="gb-prod-info">
+        <div class="gb-prod-name" onclick="gbOpenProdModal(${p.id})">${p.name}</div>
+        <div class="gb-prod-desc">${p.desc}</div>
+        <div class="gb-prod-meta">
+          <div class="gb-prod-price">${gbFmt(p.price)} ₽ <sub>/ ${p.unit}</sub></div>
+          <button class="gb-prod-add" data-pid="${p.id}" onclick="gbAddToCart(${p.id})">+</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function gbScrollToCatalog(cat) {
+  gbActiveCat = cat;
+  gbRenderTabs();
+  gbRenderGrid();
+  gbEl('gb-catalog').scrollIntoView({ behavior: 'smooth' });
+}
+window.gbScrollToCatalog = gbScrollToCatalog;
+
+// ── CART ──
+function gbAddToCart(id, qty) {
+  qty = qty || 1;
+  gbCart[id] = (gbCart[id] || 0) + qty;
+  gbUpdateCartUI();
+  document.querySelectorAll(`[data-pid="${id}"]`).forEach(btn => {
+    btn.classList.add('added'); btn.textContent = '✓';
+    setTimeout(() => { btn.classList.remove('added'); btn.textContent = '+'; }, 1400);
+  });
+}
+window.gbAddToCart = gbAddToCart;
+
+function gbChangeQty(id, d) { gbCart[id] = (gbCart[id] || 0) + d; if (gbCart[id] <= 0) delete gbCart[id]; gbUpdateCartUI(); }
+window.gbChangeQty = gbChangeQty;
+function gbRemoveFromCart(id) { delete gbCart[id]; gbUpdateCartUI(); }
+window.gbRemoveFromCart = gbRemoveFromCart;
+
+function gbUpdateCartUI() {
+  const totalItems = Object.values(gbCart).reduce((a, b) => a + b, 0);
+  const totalSum = Object.entries(gbCart).reduce((s, [id, qty]) => { const p = GB_PRODUCTS.find(x => x.id == id); return s + (p ? p.price * qty : 0); }, 0);
+
+  // count badge (sticky removed in iframe version)
+
+  // total sum
+  gbEl('gb-cart-total-sum').textContent = gbFmt(totalSum) + ' ₽';
+
+  // cart items
+  const el = gbEl('gb-cart-items');
+  if (!totalItems) { el.innerHTML = '<div class="gb-cart-empty">Корзина пуста</div>'; }
+  else {
+    el.innerHTML = Object.entries(gbCart).map(([id, qty]) => {
+      const p = GB_PRODUCTS.find(x => x.id == id);
+      return `<div class="gb-cart-item">
+        <div class="gb-cart-item-info">
+          <div class="gb-cart-item-name">${p.name}</div>
+          <div class="gb-cart-item-price">${gbFmt(p.price * qty)} ₽</div>
+          <div class="gb-cart-qty">
+            <button class="gb-qty-btn" onclick="gbChangeQty(${id},-1)">−</button>
+            <span class="gb-qty-num">${qty}</span>
+            <button class="gb-qty-btn" onclick="gbChangeQty(${id},1)">+</button>
+          </div>
+        </div>
+        <button class="gb-cart-remove" onclick="gbRemoveFromCart(${id})">×</button>
+      </div>`;
+    }).join('');
+  }
+
+}
+
+function gbOpenCart() { gbEl('gb-cart-overlay').classList.add('open'); gbEl('gb-cart-drawer').classList.add('open'); }
+function gbCloseCart() { gbEl('gb-cart-overlay').classList.remove('open'); gbEl('gb-cart-drawer').classList.remove('open'); }
+window.gbOpenCart = gbOpenCart;
+window.gbCloseCart = gbCloseCart;
+
+gbEl('gb-cart-overlay').addEventListener('click', gbCloseCart);
+gbEl('gb-cart-close').addEventListener('click', gbCloseCart);
+// sticky-cart-btn removed in iframe version
+
+// ── PRODUCT MODAL ──
+function gbOpenProdModal(id) {
+  const p = GB_PRODUCTS.find(x => x.id === id);
+  if (!p) return;
+  gbPmId = id; gbPmQty = 1;
+  gbEl('gb-pm-img').src = p.img.replace('w=400', 'w=800');
+  gbEl('gb-pm-img').alt = p.name;
+  gbEl('gb-pm-cat').textContent = GB_CAT_LABELS[p.cat] || '';
+  gbEl('gb-pm-name').textContent = p.name;
+  gbEl('gb-pm-desc').textContent = p.desc;
+  gbEl('gb-pm-price').textContent = gbFmt(p.price) + ' ₽';
+  gbEl('gb-pm-unit').textContent = 'за ' + p.unit + (p.min > 1 ? ' · минимум ' + p.min + ' ' + p.unit : '');
+  gbEl('gb-pm-qty').textContent = 1;
+  const badge = gbEl('gb-pm-badge');
+  p.badge ? (badge.textContent = p.badge, badge.style.display = 'block') : (badge.style.display = 'none');
+  gbEl('gb-pm-meta').innerHTML = [['Минимум', p.min + ' ' + p.unit], ['Срок заказа', 'от 24 часов']].map(([k,v]) => `<div class="gb-pm-meta-row"><span>${k}</span><span>${v}</span></div>`).join('');
+  const addBtn = gbEl('gb-pm-add-btn');
+  addBtn.textContent = '+ Добавить в корзину';
+  addBtn.classList.remove('added');
+  gbEl('gb-prod-overlay').classList.add('open');
+}
+window.gbOpenProdModal = gbOpenProdModal;
+
+function gbCloseProdModal() { gbEl('gb-prod-overlay').classList.remove('open'); gbPmId = null; }
+gbEl('gb-pm-close').addEventListener('click', gbCloseProdModal);
+gbEl('gb-prod-overlay').addEventListener('click', e => { if (e.target === e.currentTarget) gbCloseProdModal(); });
+gbEl('gb-pm-minus').addEventListener('click', () => { if (gbPmQty > 1) gbPmQty--; gbEl('gb-pm-qty').textContent = gbPmQty; });
+gbEl('gb-pm-plus').addEventListener('click', () => { gbPmQty++; gbEl('gb-pm-qty').textContent = gbPmQty; });
+gbEl('gb-pm-add-btn').addEventListener('click', () => {
+  if (!gbPmId) return;
+  gbAddToCart(gbPmId, gbPmQty);
+  const btn = gbEl('gb-pm-add-btn');
+  btn.textContent = '✓ Добавлено!'; btn.classList.add('added');
+  setTimeout(gbCloseProdModal, 800);
+});
+
+// ── ORDER MODAL ──
+function gbOpenOrderModal() {
+  gbEl('gb-order-success').style.display = 'none';
+  gbEl('gb-order-form-wrap').style.display = 'block';
+  const totalItems = Object.values(gbCart).reduce((a, b) => a + b, 0);
+  const totalSum = Object.entries(gbCart).reduce((s, [id, qty]) => { const p = GB_PRODUCTS.find(x => x.id == id); return s + (p ? p.price * qty : 0); }, 0);
+  const sumEl = gbEl('gb-order-summary');
+  if (!totalItems) { sumEl.innerHTML = '<div class="gb-order-summary-row">Корзина пуста — выберите позиции из каталога</div>'; }
+  else {
+    sumEl.innerHTML = Object.entries(gbCart).map(([id, qty]) => { const p = GB_PRODUCTS.find(x => x.id == id); return `<div class="gb-order-summary-row"><span>${p.name} × ${qty}</span><span>${gbFmt(p.price * qty)} ₽</span></div>`; }).join('') +
+      `<div class="gb-order-summary-row total"><span>Итого</span><span>${gbFmt(totalSum)} ₽</span></div>`;
+  }
+  gbEl('gb-order-overlay').classList.add('open');
+}
+function gbCloseOrderModal() { gbEl('gb-order-overlay').classList.remove('open'); }
+window.gbOpenOrderModal = gbOpenOrderModal;
+gbEl('gb-order-close').addEventListener('click', gbCloseOrderModal);
+gbEl('gb-order-overlay').addEventListener('click', e => { if (e.target === e.currentTarget) gbCloseOrderModal(); });
+
+function gbSubmitOrder() {
+  const name = gbEl('gb-f-name').value.trim();
+  const phone = gbEl('gb-f-phone').value.trim();
+  if (!name || !phone) { alert('Пожалуйста, укажите имя и телефон'); return; }
+  gbEl('gb-order-form-wrap').style.display = 'none';
+  gbEl('gb-order-success').style.display = 'block';
+}
+window.gbSubmitOrder = gbSubmitOrder;
+
+// ── QUIZ ──
+function gbGoToStep(step) {
+  document.querySelectorAll('.gb-quiz-step').forEach(s => s.classList.remove('active'));
+  gbEl('gb-quiz-result').classList.remove('active');
+  const t = document.querySelector(`.gb-quiz-step[data-step="${step}"]`);
+  if (t) t.classList.add('active');
+  document.querySelectorAll('.gb-quiz-dot').forEach((d, i) => d.classList.toggle('done', i < step));
+}
+
+function gbShowQuizResult() {
+  document.querySelectorAll('.gb-quiz-step').forEach(s => s.classList.remove('active'));
+  gbEl('gb-quiz-result').classList.add('active');
+  document.querySelectorAll('.gb-quiz-dot').forEach(d => d.classList.add('done'));
+  const tags = Object.values(gbQuizAnswers);
+  const MENU_ITEMS = [
+    { id:1,  name:'Тарталетки с лососем',   price:420, tags:['wow','premium','luxury','wedding'] },
+    { id:12, name:'Бокс «Сырный»',          price:3200,tags:['value','variety','corp','gift','mid'] },
+    { id:9,  name:'Брускетта с авокадо',    price:290, tags:['wow','variety','premium','luxury','wedding'] },
+    { id:15, name:'Куриные шашлычки',       price:320, tags:['hot','value','corp','birthday','large'] },
+    { id:19, name:'Мини-вафли с пломбиром', price:250, tags:['wow','variety','wedding','birthday'] },
+    { id:5,  name:'Канапе «Под крепкое»',   price:180, tags:['value','budget','corp','birthday'] },
+  ];
+  const scored = MENU_ITEMS.map(item => ({ ...item, score: tags.filter(t => item.tags.includes(t)).length }))
+    .sort((a, b) => b.score - a.score).slice(0, 3);
+  gbEl('gb-quiz-rec-cards').innerHTML = scored.map(item => `
+    <div class="gb-quiz-rec-card">
+      <div><div class="gb-quiz-rec-name">${item.name}</div><div class="gb-quiz-rec-price">от ${gbFmt(item.price)} ₽</div></div>
+      <button class="gb-quiz-rec-add" onclick="gbAddToCart(${item.id});this.textContent='✓ Добавлено'">+ В корзину</button>
+    </div>`).join('');
+}
+
+document.querySelectorAll('.gb-quiz-option').forEach(opt => {
+  opt.addEventListener('click', function() {
+    const step = this.closest('.gb-quiz-step').dataset.step;
+    this.closest('.gb-quiz-options').querySelectorAll('.gb-quiz-option').forEach(o => o.classList.remove('selected'));
+    this.classList.add('selected');
+    gbQuizAnswers[step] = this.dataset.val;
+    const nb = this.closest('.gb-quiz-step').querySelector('.gb-quiz-next');
+    if (nb) nb.disabled = false;
+  });
+});
+document.querySelectorAll('.gb-quiz-next').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const next = this.dataset.next;
+    if (next === 'result') gbShowQuizResult(); else gbGoToStep(parseInt(next));
+  });
+});
+document.querySelectorAll('.gb-quiz-back').forEach(btn => {
+  btn.addEventListener('click', function() { gbGoToStep(parseInt(this.dataset.prev)); });
+});
+gbEl('gb-quiz-restart').addEventListener('click', () => {
+  Object.keys(gbQuizAnswers).forEach(k => delete gbQuizAnswers[k]);
+  document.querySelectorAll('.gb-quiz-option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.gb-quiz-next').forEach(b => b.disabled = true);
+  gbGoToStep(1);
+});
+
+// ── AUTO HEIGHT for iframe ──
+function gbSendHeight() {
+  const h = document.getElementById('gb-root').scrollHeight;
+  window.parent.postMessage({ gbHeight: h }, '*');
+}
+window.addEventListener('load', gbSendHeight);
+window.addEventListener('resize', gbSendHeight);
+const gbHObs = new MutationObserver(gbSendHeight);
+gbHObs.observe(document.getElementById('gb-root'), { childList:true, subtree:true, attributes:true });
+
+// ── REVEAL ──
+const gbRevealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); gbRevealObs.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.gb-reveal').forEach(el => gbRevealObs.observe(el));
+
+// ── INIT ──
+gbRenderTabs();
+gbRenderGrid();
+gbUpdateCartUI();
+
+})();
+</script>
+</body>
+</html>
